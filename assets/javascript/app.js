@@ -26,6 +26,7 @@ $(document).ready(function () {
     // below each gif the gif rating, title, and link to the gifs giphy page will be included
     $(document).on("click", ".button", function () {
         $(".hide-body").show() //shows background div for gifs
+        $(".gifs").remove()
         var chosenTopic = $(this).attr("data-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
             chosenTopic + "&api_key=iGbM0lVfCEofqDLKmiCe3mVshNrH1Ldo&limit=10";
@@ -37,7 +38,7 @@ $(document).ready(function () {
                 var results = response.data;
                 for (var i = 0; i < results.length; i++) {
                     // variables to be prepended below
-                    var gifDiv = $("<div>");
+                    var gifDiv = $("<div class='gifs'>");
                     var rating = $("<p class='m-2'>").text("Rating: " + results[i].rating);
                     var title = $("<p class='m-2'>").text("Tite: " + results[i].title)
                     var url = $("<a href=" + results[i].url + " class='m-2'>").text("Link to Giphy")
