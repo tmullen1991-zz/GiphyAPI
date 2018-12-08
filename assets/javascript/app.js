@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // initial topics array
-    var topics = ["skiing", "camping", "infomercials", "charlie day",]
+    var topics = ["skiing", "camping", "infomercials", "charlie day","way too much coffee"]
     // function that creates buttons from topics array and appends them to the top of the page
     var createButtons = function () {
         for (var i = 0; i < topics.length; i++) {
@@ -25,6 +25,7 @@ $(document).ready(function () {
     // an class="select-image" will be included for each image (line 42) and this class will be used for the lowest click event to animate/stop gifs
     // below each gif the gif rating, title, and link to the gifs giphy page will be included
     $(document).on("click", ".button", function () {
+        $(".hide-body").show() //shows background div for gifs
         var chosenTopic = $(this).attr("data-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
             chosenTopic + "&api_key=iGbM0lVfCEofqDLKmiCe3mVshNrH1Ldo&limit=10";
@@ -74,5 +75,8 @@ $(document).ready(function () {
             return
         }
     })
+    // loads initial buttons from array
     createButtons();
+    // hides background div for gifs on load
+    $(".hide-body").hide()
 })
